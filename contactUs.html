@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تماس با ما</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #fffaf4;
+      color: #3a2c23;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse; /* چون rtl هست باید عکس بچینیم */
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-weight: bold;
+  color: #d2691e;
+  font-size: 1.5rem;
+  margin-right: auto; /* لوگو بره سمت چپ */
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  color: #3a2c23;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #d2691e;
+}
+
+    .contact-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .contact-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section p {
+      font-size: 1.1rem;
+      color: #5c4531;
+      margin-bottom: 3rem;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .contact-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      width: 300px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #4a372a;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 1.8rem;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 1rem 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: #fefcf8;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .input-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 0.9rem;
+      right: 1rem;
+      color: #aaa;
+      font-size: 0.95rem;
+      pointer-events: none;
+      transition: 0.2s ease;
+      background-color: #fffaf4;
+      padding: 0 0.3rem;
+    }
+
+    .input-group input:focus,
+    .input-group textarea:focus {
+      border-color: #d2691e;
+      box-shadow: 0 0 5px rgba(210, 105, 30, 0.2);
+      outline: none;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label,
+    .input-group textarea:focus + label,
+    .input-group textarea:not(:placeholder-shown) + label {
+      top: -0.6rem;
+      font-size: 0.8rem;
+      color: #d2691e;
+    }
+
+    .contact-card button {
+      background-color: #d2691e;
+      color: white;
+      padding: 0.75rem;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-card button:hover {
+      background-color: #a55314;
+    }
+
+    .contact-info p {
+      margin: 0.6rem 0;
+      color: #5c4531;
+    }
+
+    .map {
+      width: 100%;
+      height: 150px;
+      background-color: #f5e2cf;
+      border-radius: 10px;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #b96b33;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- نوار ناوبری -->
+  <nav>
+    <div class="nav-logo">ChocoShop</div>
+    <div class="nav-links">
+      <a href="index.html">خانه</a>
+      <a href="#categories">دسته‌بندی‌ها</a>
+      <a href="#special">محصولات ویژه</a>
+      <a href="#services">خدمات</a>
+      <a href="#about">درباره ما</a>
+      <a href="#contact">تماس با ما</a>
+      <a href="#" onclick="switchLang()">EN</a>
+    </div>
+  </nav>
+  
+  
+
+  <!-- فرم تماس با ما -->
+  <section class="contact-section" id="contact">
+    <h1>تماس با ما</h1>
+    <p>برای هرگونه سوال یا درخواست، خوشحال می‌شویم در تماس باشید. تیم ما آماده پاسخ‌گویی به شماست!</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h2>فرم تماس با ما</h2>
+
+        <div class="input-group">
+          <input type="text" id="name" placeholder=" " required>
+          <label for="name">نام</label>
+        </div>
+
+        <div class="input-group">
+          <input type="email" id="email" placeholder=" " required>
+          <label for="email">ایمیل</label>
+        </div>
+
+        <div class="input-group">
+          <textarea id="message" placeholder=" " required></textarea>
+          <label for="message">پیام شما</label>
+        </div>
+
+        <button>ارسال پیام</button>
+      </div>
+
+      <div class="contact-card contact-info">
+        <h2>راه‌های ارتباطی</h2>
+        <p>+124567899</p>
+        <p>info@example.com</p>
+        <p>تهران، ایران - مثال خیابان ۱۲۳</p>
+        <div class="map">📍 نقشه</div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  function switchLang() {
+    alert('Language switching is not implemented yet.');
+  }
+</script>
+
+</body>
+</html>

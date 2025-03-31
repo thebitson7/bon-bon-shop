@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروشگاه شکلات</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+  html {
+      scroll-behavior: smooth;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #fff7f0;
+      color: #333;
+      line-height: 1.8;
+    }
+    nav {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-weight: bold;
+      color: #d2691e;
+      font-size: 1.5rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      color: #3a2c23;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #d2691e;
+    }
+
+    /* هدر */
+    .hero {
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)), url('./img/ChatGPT Image Mar 31, 2025, 10_44_03 AM.png');
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-left: 5%;
+    }
+    .hero-text {
+      color: white;
+      max-width: 500px;
+      padding: 2rem;
+      text-align: right;
+    }
+    .hero-text h1 {
+      font-size: 2.7rem;
+      margin-bottom: 1rem;
+    }
+    .hero-text p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      padding: 0.9rem 2.2rem;
+      font-size: 1.05rem;
+      background: linear-gradient(to left, #d2691e, #b55414);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .btn:hover {
+      background: linear-gradient(to left, #a55314, #843f0e);
+      transform: scale(1.07);
+    }
+
+    /* دسته‌بندی */
+    .categories {
+      text-align: center;
+      padding: 5rem 2rem;
+      background-color: #fdf9f4;
+    }
+    .categories h2 {
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
+      color: #3a2c23;
+      position: relative;
+    }
+    .categories h2::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #d2691e;
+      margin: 0.7rem auto 0;
+      border-radius: 6px;
+    }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .category-item {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1rem;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
+    }
+    .category-item:hover {
+      transform: translateY(-10px) rotate(-1deg);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    }
+    .category-item img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      transition: transform 0.3s ease;
+    }
+    .category-item:hover img {
+      transform: scale(1.04);
+    }
+    .category-item p {
+      margin-top: 1rem;
+      font-size: 1.15rem;
+      color: #5c4531;
+      font-weight: 700;
+    }
+
+    /* محصولات ویژه */
+    .special-products {
+      background-color: #fff7f0;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      margin-bottom: 1rem;
+    }
+    .product-card h3 {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+      color: #4a372a;
+    }
+    .price {
+      font-size: 1rem;
+      color: #a55314;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .product-btn {
+      background-color: #d2691e;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease;
+    }
+    .product-btn:hover {
+      background-color: #a55314;
+    }
+
+    /* درباره ما */
+    .about-us {
+      background-color: #fff7f0;
+      padding: 5rem 2rem;
+    }
+    .about-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-text, .about-image {
+      flex: 1;
+      min-width: 280px;
+    }
+    .about-text h2 {
+      font-size: 2rem;
+      color: #3a2c23;
+      margin-bottom: 1rem;
+    }
+    .about-text p {
+      font-size: 1.1rem;
+      color: #5c4531;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: 16px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    /* خدمات */
+    .services {
+      background-color: #fdf9f4;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 1rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
+    }
+    .service-card img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      color: #4a372a;
+    }
+    .service-card p {
+      font-size: 1rem;
+      color: #5c4531;
+    }
+
+    /* فوتر */
+    .footer {
+      background-color: #3a2c23;
+      color: #fff7f0;
+      padding: 4rem 2rem 2rem;
+      font-size: 0.95rem;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .footer a, .footer p, .footer li {
+      color: #e5d5c2;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #ffb76b;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      border-top: 1px solid #5c4531;
+      padding-top: 1rem;
+      font-size: 0.85rem;
+      color: #c5b3a3;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-links">
+      <a href="#" onclick="switchLang()">EN</a>
+      <a href="#hero">خانه</a>
+      <a href="#categories">دسته‌بندی‌ها</a>
+      <a href="#special">محصولات ویژه</a>
+      <a href="#services">خدمات</a>
+      <a href="#about">درباره ما</a>
+      <a href="./contactUs.html">تماس با ما</a>
+    </div>
+    <div class="nav-logo">ChocoShop</div>
+  </nav>
+
+
+  <!-- هدر اصلی -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>شکلات‌های دست‌ساز</h1>
+      <p>لذیذترین شکلات‌های خالص و با کیفیت</p>
+      <a href="#categories" class="btn">خرید کنید</a>
+    </div>
+  </header>
+
+  <!-- دسته‌بندی محصولات -->
+  <section class="categories" id="categories">
+    <h2>دسته‌بندی محصولات</h2>
+    <div class="category-grid">
+      <div class="category-item">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 11_25_23 AM.png" alt="شکلات" title="دسته شکلات">
+        <p>شکلات</p>
+      </div>
+      <div class="category-item">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 11_26_56 AM.png" alt="آجیل" title="دسته آجیل">
+        <p>آجیل</p>
+      </div>
+      <div class="category-item">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 11_28_29 AM.png" alt="شکلات مغزدار" title="شکلات‌های مغزدار">
+        <p>شکلات مغزدار</p>
+      </div>
+      <div class="category-item">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 11_31_35 AM.png" alt="شیرینی" title="انواع شیرینی">
+        <p>شیرینی</p>
+      </div>
+    </div>
+  </section>
+<!-- محصولات ویژه -->
+<section class="special-products" id="special">
+    <h2>محصولات ویژه</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 12_24_31 PM.png" alt="شکلات شیری با فندق">
+        <h3>شکلات شیری با فندق</h3>
+        <p class="price">$2.90</p>
+        <a href="#" class="product-btn">افزودن به سبد خرید</a>
+      </div>
+      <div class="product-card">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 12_21_38 PM.png" alt="بادام بخنـده">
+        <h3>بادام</h3>
+        <p class="price">$3.50</p>
+        <a href="#" class="product-btn">افزودن به سبد خرید</a>
+      </div>
+      <div class="product-card">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 12_14_52 PM.png" alt="پرالین شکلات تاج">
+        <h3>پرالین شکلات تاج</h3>
+        <p class="price">$1.80</p>
+        <a href="#" class="product-btn">افزودن به سبد خرید</a>
+      </div>
+      <div class="product-card">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 12_02_17 PM.png" alt="شکلات سفید با پودر فرنگی">
+        <h3>شکلات سفید با پودر فرنگی</h3>
+        <p class="price">$2.90</p>
+        <a href="#" class="product-btn">افزودن به سبد خرید</a>
+      </div>
+    </div>
+  </section>
+<!-- درباره ما -->
+<section class="about-us" id="about">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>درباره ما</h2>
+        <p>
+          استفاده از طعم‌های رنگارنگ، ترکیبی از آجیل خالص، شکلات دست‌ساز با کیفیت، بسته‌بندی شیک و محصولات جذاب باعث شده تا برند ما تبدیل به یکی از انتخاب‌های خاص و محبوب در بین خانواده‌ها، کسب‌وکارها و هدیه‌های سفارشی شود.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 12_32_18 PM.png" alt="آجیل ترکیبی خوشمزه">
+      </div>
+    </div>
+  </section>
+  <!-- خدمات ما -->
+<section class="services" id="services">
+    <h2>خدمات ما</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 05_03_55 PM.png" alt="سفارش کیک تولد">
+        <h3>سفارش کیک تولد</h3>
+        <p>سفارش کیک تولد با طرح‌های اختصاصی، شکلاتی یا خامه‌ای، مناسب همه سنین.</p>
+      </div>
+      <div class="service-card">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 05_07_57 PM.png" alt="سفارش شرکتی">
+        <h3>سفارش شرکتی</h3>
+        <p>پک‌های شکلات و آجیل ویژه سازمان‌ها و مناسبت‌های رسمی با برند شما.</p>
+      </div>
+      <div class="service-card">
+        <img src="./img/ChatGPT Image Mar 31, 2025, 05_11_16 PM.png" alt="بسته‌بندی هدیه">
+        <h3>بسته‌بندی هدیه</h3>
+        <p>بسته‌بندی لاکچری، مناسب هدیه تولد، ولنتاین، سالگرد و مناسبت‌های خاص.</p>
+      </div>
+    </div>
+  </section>
+  <!-- فوتر -->
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col about">
+        <h4>درباره ما</h4>
+        <p>
+          ما با عشق، شکلات‌های دست‌ساز، آجیل‌های تازه و بسته‌بندی‌های خاص ارائه می‌دهیم تا لحظات شما شیرین‌تر شود.
+        </p>
+      </div>
+      <div class="footer-col links">
+        <h4>لینک‌ها</h4>
+        <ul>
+          <li><a href="#categories">دسته‌بندی‌ها</a></li>
+          <li><a href="#special">محصولات ویژه</a></li>
+          <li><a href="#services">خدمات ما</a></li>
+          <li><a href="#about">درباره ما</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact">
+        <h4>تماس با ما</h4>
+        <ul>
+          <li>📍 عمان</li>
+          <li>📞 ۰۲۱-۱۲۳۴۵۶۷۸</li>
+          <li>✉️ info@chocoshop.ir</li>
+        </ul>
+      </div>
+      <div class="footer-col social">
+        <h4>ما را دنبال کنید</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-telegram"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 فروشگاه شکلات. تمام حقوق محفوظ است.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>
